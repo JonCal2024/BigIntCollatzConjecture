@@ -330,7 +330,7 @@ BigInt BigInt::operator*(BigInt multiplicand)
 	{
 		for(int i = 0; i < (int)v.size(); i++)
 		{	
-			for(int j = 0; j < int(v[i]); j++)
+			for(int j = 0; j < (int)v[i]; j++)
 			{
 				placesProduct = placesProduct + multiplicand; 
 			}
@@ -341,13 +341,14 @@ BigInt BigInt::operator*(BigInt multiplicand)
 			}
 
 			product = product + placesProduct;
+			placesProduct = 0;
 		}
 	}
 	else
 	{
 		for(int i = 0; i < (int)multiplicand.v.size(); i++)	
 		{	
-			for(int j = 0; j < int(multiplicand.v[i]); j++)
+			for(int j = 0; j < (int)multiplicand.v[i]; j++)
 			{
 				placesProduct = placesProduct + *this; 
 			}
@@ -358,6 +359,7 @@ BigInt BigInt::operator*(BigInt multiplicand)
 			}
 
 			product = product + placesProduct;
+			placesProduct = 0;
 		}
 	}
 
