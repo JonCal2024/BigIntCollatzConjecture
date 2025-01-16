@@ -68,7 +68,7 @@ class BigInt
 	 	BigInt operator%(BigInt n);				//overloaded modulo operator	
 	 	BigInt operator%(int n);				//overloaded modulo operator
 
-	 	BigInt operator^(int n);				//overloaded power operator
+	 	BigInt power(int n);				//overloaded power operator
 
 	 	int operator[](int index) const;		//overloaded index operator
 	
