@@ -524,13 +524,13 @@ BigInt BigInt::operator%(int n)
 }
 
 /****************************************************
-* operator^(int)
+* power(int)
 * return: BigInt
 *
-* Overloaded power operator that takes in an int and
+* Power operator that takes in an int and
 * raises *this to that power.
 *****************************************************/
-BigInt BigInt::operator^(int n)
+BigInt BigInt::power(int n)
 {
 	BigInt product = *this;
 	for(int i = 0; i < n; i++)
