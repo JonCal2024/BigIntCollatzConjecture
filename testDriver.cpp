@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <algorithm>	//reverse()
+#include <algorithm>		//reverse()
 #include <cmath>		//pow()
 #include <cctype>		//isdigit()
 #include <limits.h>		//INT_MAX
@@ -152,11 +152,16 @@ int main()
 	{
 		BigInt MAX(INT_MAX);
 		cout <<	"The largest integer is " << MAX << endl;
-		cout << "Twice the largest integer is " << MAX + MAX << endl;
+		cout << "Twice the largest integer is " << MAX * 2 << endl;
 		BigInt start(INT_MAX);
 		//BigInt start(12);
 		bool printSteps = false;
-		Statistics stats = {start, 0, 0, 0, 0};
+		Statistics stats = {};
+		stats.start = start;
+		stats.steps = 0;
+		stats.max = 0;
+		stats.odd = 0;
+		stats.even = 0;
 		findThreeNp1(start, stats, printSteps);
 		cout << endl;
 		printStats(stats);
@@ -491,7 +496,7 @@ BigInt BigInt::operator*(BigInt multiplicand)
 	{
 		for(int i = 0; i < (int)v.size(); i++)
 		{	
-			for(int j = 0; j < int(v[i]); j++)
+			for(int j = 0; j < (int)v[i]; j++)
 			{
 				placesProduct = placesProduct + multiplicand; 
 			}
@@ -502,13 +507,14 @@ BigInt BigInt::operator*(BigInt multiplicand)
 			}
 
 			product = product + placesProduct;
+			placesProduct = 0;
 		}
 	}
 	else
 	{
 		for(int i = 0; i < (int)multiplicand.v.size(); i++)	
 		{	
-			for(int j = 0; j < int(multiplicand.v[i]); j++)
+			for(int j = 0; j < (int)multiplicand.v[i]; j++)
 			{
 				placesProduct = placesProduct + *this; 
 			}
@@ -519,6 +525,7 @@ BigInt BigInt::operator*(BigInt multiplicand)
 			}
 
 			product = product + placesProduct;
+			placesProduct = 0;
 		}
 	}
 
@@ -1040,6 +1047,8 @@ void findThreeNp1(BigInt num, Statistics& stats, bool printSteps)
 	if(num == 1)
 	{	
 		cout << endl;
+		stats.odd++;
+		stats.steps++;
 		return;
 	}
 	else if(num % 2 == 0)
