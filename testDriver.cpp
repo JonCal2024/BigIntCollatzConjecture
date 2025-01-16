@@ -699,7 +699,7 @@ BigInt BigInt::operator%(int n)
 BigInt BigInt::power(int n)
 {
 	BigInt product = *this;
-	for(int i = 0; i < n; i++)
+	for(int i = 1; i < n; i++)
 	{
 		product = product * *this;
 	}
